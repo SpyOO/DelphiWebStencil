@@ -1,2 +1,2 @@
-# publish
+# Web stencil login demo
 
