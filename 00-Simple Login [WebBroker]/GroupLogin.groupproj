@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{99B21DBE-E110-4C03-8EAC-E86473999370}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Projectlogin.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="..\02-TodoList - Stencil\task_stencil.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="Projectlogin">
+        <MSBuild Projects="Projectlogin.dproj"/>
+    </Target>
+    <Target Name="Projectlogin:Clean">
+        <MSBuild Projects="Projectlogin.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Projectlogin:Make">
+        <MSBuild Projects="Projectlogin.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="task_stencil">
+        <MSBuild Projects="..\02-TodoList - Stencil\task_stencil.dproj"/>
+    </Target>
+    <Target Name="task_stencil:Clean">
+        <MSBuild Projects="..\02-TodoList - Stencil\task_stencil.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="task_stencil:Make">
+        <MSBuild Projects="..\02-TodoList - Stencil\task_stencil.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="Projectlogin;task_stencil"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="Projectlogin:Clean;task_stencil:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="Projectlogin:Make;task_stencil:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

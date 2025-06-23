@@ -1,0 +1,22 @@
+<!-- Archivo: dashboard.html -->
+@LayoutPage layouts/layout.html
+
+<div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="h3">Dashboard</h1>
+        <!-- 
+            Este botón enviará una petición POST a /logout.
+            Tras una respuesta exitosa, HTMX buscará la cabecera HX-Redirect
+            para saber a dónde ir, que en este caso será de vuelta al login.
+        -->
+        <button hx-post="/logout" class="btn btn-outline-secondary">Cerrar Sesión</button>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">¡Bienvenido!</h5>
+            <p class="card-text">Has iniciado sesión correctamente. Esta es tu página principal.</p>
+            <p>Aquí podrías mostrar gráficos, tablas de datos, o cualquier otra información relevante para el usuario.</p>
+        </div>
+    </div>
+</div>

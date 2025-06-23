@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{0A3ABF4F-CA7C-4CBA-9F56-66DB32F092DD}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="00-Simple Login [WebBroker]\ProjectWebBrokerlogin.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="00-Simple Login [THorse]\ProjectHorseSimpleLogin.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="ProjectWebBrokerlogin">
+        <MSBuild Projects="00-Simple Login [WebBroker]\ProjectWebBrokerlogin.dproj"/>
+    </Target>
+    <Target Name="ProjectWebBrokerlogin:Clean">
+        <MSBuild Projects="00-Simple Login [WebBroker]\ProjectWebBrokerlogin.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ProjectWebBrokerlogin:Make">
+        <MSBuild Projects="00-Simple Login [WebBroker]\ProjectWebBrokerlogin.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="ProjectHorseSimpleLogin">
+        <MSBuild Projects="00-Simple Login [THorse]\ProjectHorseSimpleLogin.dproj"/>
+    </Target>
+    <Target Name="ProjectHorseSimpleLogin:Clean">
+        <MSBuild Projects="00-Simple Login [THorse]\ProjectHorseSimpleLogin.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ProjectHorseSimpleLogin:Make">
+        <MSBuild Projects="00-Simple Login [THorse]\ProjectHorseSimpleLogin.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="ProjectWebBrokerlogin;ProjectHorseSimpleLogin"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="ProjectWebBrokerlogin:Clean;ProjectHorseSimpleLogin:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="ProjectWebBrokerlogin:Make;ProjectHorseSimpleLogin:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

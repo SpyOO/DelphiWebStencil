@@ -1,0 +1,46 @@
+<!-- Archivo: login.html -->
+@LayoutPage layouts/layout.html
+
+<div class="row justify-content-center">
+    <div class="col-md-6 col-lg-4">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title text-center">Iniciar Sesión (Simple)</h3>
+            </div>
+            <div class="card-body">
+                
+                <!-- 
+                    Añadimos hx-indicator="#spinner" para mostrar el spinner durante la petición.
+                -->
+                <form hx-post="/login" 
+                      hx-target="#login-response" 
+                      hx-swap="outerHTML" 
+                      hx-indicator="#spinner">
+                    
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Usuario</label>
+                        <input type="text" id="username" name="username" class="form-control" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Contraseña</label>
+                        <input type="password" id="password" name="password" class="form-control" required>
+                    </div>
+                    
+                    <!-- Este div será REEMPLAZADO por la respuesta del servidor -->
+                    <div id="login-response"></div>
+
+                    <div class="d-grid mt-4">
+                        <button type="submit" class="btn btn-primary">
+                            <!-- El texto del botón se mostrará por defecto -->
+                            <span class="btn-text">Entrar</span>
+                            <!-- El spinner se mostrará durante la petición AJAX -->
+                            <span id="spinner" class="spinner-border spinner-border-sm htmx-indicator" role="status" aria-hidden="true"></span>
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
